@@ -6,7 +6,8 @@ defmodule RumblWeb.Router do
     plug :fetch_session
     plug :fetch_flash
     plug :protect_from_forgery
-    plug :put_secure_browser_headers
+    plug :put_secure_browser_header
+    plug RumblWeb.Auth
   end
 
   pipeline :api do
