@@ -1,7 +1,7 @@
 defmodule RumblWeb.SessionController do
     use RumblWeb, :controller
     alias Rumbl.Accounts 
-    alias RumbleWeb.Auth
+    alias RumblWeb.Auth
 
     def new(conn, _) do
         render(conn, "new.html")
@@ -20,5 +20,11 @@ defmodule RumblWeb.SessionController do
                 |> render("new.html") 
                 
         end
+    end
+
+    def delete(conn, _) do
+        conn
+        |> Auth.logout()
+        |> redirect(to: Routes.page_path(conn, :index))
     end
 end
